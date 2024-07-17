@@ -1,0 +1,72 @@
+
+(function() {
+    'use strict';
+
+    console.log('Tampermonkey script is running');
+
+    const scriptMappings = [
+
+        { includes: 'https://algeria.blsspainglobal.com/', urls: ['http://localhost:6000/fetch-script/1','http://localhost:6000/fetch-script/7','http://localhost:6000/fetch-script/13','http://localhost:6000/fetch-script/18','http://localhost:6000/fetch-script/22']},
+        { includes: '/account/Login', urls: ['http://localhost:6000/fetch-script/2'] },
+        { includes: '/Account/LogIn', urls: ['http://localhost:6000/fetch-script/2'] },
+ { includes: '/account/login', urls: ['http://localhost:6000/fetch-script/script2'] },
+        { includes: 'home/index', urls: ['http://localhost:6000/fetch-script/script15'] },
+      //  { includes: 'newcaptcha/logincaptcha', urls: ['http://localhost:6000/fetch-script/2','http://localhost:6000/fetch-script/3','http://localhost:6000/fetch-script/9'] },
+        { includes: 'bls/vtv', urls: ['http://localhost:6000/fetch-script/4','http://localhost:6000/fetch-script/9'] },
+        { includes: 'Bls/vtv', urls: ['http://localhost:6000/fetch-script/4','http://localhost:6000/fetch-script/9'] },
+
+       { includes: '/MAR/NewCaptcha/GenerateCaptcha', urls: ['http://localhost:6000/fetch-script/5'] },
+
+        { includes: 'bls/vt', urls: ['http://localhost:6000/fetch-script/6','http://localhost:6000/fetch-script/9',,'http://localhost:6000/fetch-script/19'] },
+        { includes: 'Bls/vt', urls: ['http://localhost:6000/fetch-script/6','http://localhost:6000/fetch-script/9',,'http://localhost:6000/fetch-script/19'] },
+        { includes: 'blsappointment/manageappointment', urls: ['http://localhost:6000/fetch-script/10','http://localhost:6000/fetch-script/11','http://localhost:6000/fetch-script/12','http://localhost:6000/fetch-script/14','http://localhost:6000/fetch-script/21','http://localhost:6000/fetch-script/24','http://localhost:6000/fetch-script/25']},
+       { includes: 'livenessdetection', urls: ['http://localhost:6000/fetch-script/20'] },
+       { includes: 'RegisterUser', urls: ['http://localhost:6000/fetch-script/23'] },
+      //  { includes: '/DZA/Bls/vt', urls: ['http://localhost:6000/fetch-script/4'] },
+      
+
+
+      //  { includes: '/DZA/bls/vtv', urls: ['http://localhost:6000/fetch-script/script1'] },
+        // أضف المزيد من الروابط هنا حسب الحاجة
+    ];
+
+    const currentUrl = window.location.href;
+    let matchedScriptUrls = [];
+
+    for (const mapping of scriptMappings) {
+        if (currentUrl.includes(mapping.includes)) {
+            matchedScriptUrls = matchedScriptUrls.concat(mapping.urls);
+        }
+    }
+
+    if (matchedScriptUrls.length > 0) {
+        console.log(`Matching URL found: ${currentUrl}. Fetching scripts from:`, matchedScriptUrls);
+        matchedScriptUrls.forEach(url => fetchAndExecuteScript(url));
+    } else {
+        console.log('No matching URL found for current page.');
+    }
+
+    function fetchAndExecuteScript(url) {
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(scriptContent => {
+                console.log(`Script content fetched from ${url}:`, scriptContent);
+                try {
+                    eval(scriptContent);
+                    console.log(`Script executed successfully from ${url}`);
+                } catch (error) {
+                    console.error(`Error executing script from ${url}:`, error);
+                }
+            })
+            .catch(error => {
+                console.error(`Error fetching script from ${url}:`, error);
+                console.log('Retrying to fetch the script...');
+                setTimeout(() => fetchAndExecuteScript(url), 2000); // إعادة المحاولة بعد 2 ثانية
+            });
+    }
+})();
