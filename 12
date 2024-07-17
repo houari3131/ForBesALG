@@ -11,7 +11,7 @@
 // ==/UserScript==
 
 // الكود الخاص بالزر الثالث
-        console.log("Button 3 clicked");
+      //  console.log("Button 3 clicked");
        function Captchaseg()
 {
 document.querySelector("#CaptchaId").value='bfee4479-968d-45e8-a6ec-882d6010a1af';
