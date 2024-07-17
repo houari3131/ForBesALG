@@ -15,7 +15,7 @@
         { includes: 'bls/vtv', urls: ['http://localhost:3000/fetch-script/4','http://localhost:3000/fetch-script/9'] },
         { includes: 'Bls/vtv', urls: ['http://localhost:3000/fetch-script/4','http://localhost:3000/fetch-script/9'] },
 
-       { includes: '/MAR/NewCaptcha/GenerateCaptcha', urls: ['http://localhost:3000/fetch-script/5'] },
+       { includes: '/NewCaptcha/GenerateCaptcha', urls: ['http://localhost:3000/fetch-script/5'] },
 
         { includes: 'bls/vt', urls: ['http://localhost:3000/fetch-script/6','http://localhost:3000/fetch-script/9',,'http://localhost:3000/fetch-script/19'] },
         { includes: 'Bls/vt', urls: ['http://localhost:3000/fetch-script/6','http://localhost:3000/fetch-script/9',,'http://localhost:3000/fetch-script/19'] },
