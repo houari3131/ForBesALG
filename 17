@@ -17,8 +17,8 @@
 
        { includes: '/NewCaptcha/GenerateCaptcha', urls: ['http://localhost:3000/fetch-script/5'] },
 
-        { includes: 'bls/vt', urls: ['http://localhost:3000/fetch-script/6','http://localhost:3000/fetch-script/9',,'http://localhost:3000/fetch-script/19'] },
-        { includes: 'Bls/vt', urls: ['http://localhost:3000/fetch-script/6','http://localhost:3000/fetch-script/9',,'http://localhost:3000/fetch-script/19'] },
+        { includes: '?data', urls: ['http://localhost:3000/fetch-script/6','http://localhost:3000/fetch-script/9',,'http://localhost:3000/fetch-script/19'] },
+     //   { includes: '?data', urls: ['http://localhost:3000/fetch-script/6','http://localhost:3000/fetch-script/9',,'http://localhost:3000/fetch-script/19'] },
         { includes: 'blsappointment/manageappointment', urls: ['http://localhost:3000/fetch-script/10','http://localhost:3000/fetch-script/11','http://localhost:3000/fetch-script/12','http://localhost:3000/fetch-script/14','http://localhost:3000/fetch-script/21','http://localhost:3000/fetch-script/24','http://localhost:3000/fetch-script/25']},
        { includes: 'livenessdetection', urls: ['http://localhost:3000/fetch-script/20'] },
        { includes: 'RegisterUser', urls: ['http://localhost:3000/fetch-script/23'] },
