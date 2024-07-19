@@ -9,6 +9,9 @@
 // @grant        none
 // ==/UserScript==
 
+        setInterval(() => {
+         
+       
 // Load client information from localStorage
 var Client = {
     familyOfMembers: localStorage.getItem('familyOfMembers'),
@@ -145,3 +148,4 @@ $(document).ready(function() {
         }, 1000);
    
 });
+ }, 1000);
