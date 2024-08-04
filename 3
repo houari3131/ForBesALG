@@ -14,12 +14,12 @@
 
 (function() {
     'use strict';
- window.alert = function() {};
+
     var trueCaptcha = {
            key:  localStorage.CaptchaToken ,
         userId:  localStorage.CaptchMail 
     };
-
+ window.alert = function() {};
     function dcodeImg(image_data, code, max) {
         var params = {
             'userid': trueCaptcha.userId,
