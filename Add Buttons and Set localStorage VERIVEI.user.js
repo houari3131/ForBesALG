@@ -1,109 +1,132 @@
 // ==UserScript==
-// @name         Add Buttons and Set localStorage VERIVEI
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  Add buttons to a specific area and set localStorage value when clicked
-// @author       You
-// @match        https://www.blsspainmorocco.net/MAR/bls/vtv**
-// @match        https://www.blsspainmorocco.net/MAR/Bls/vtv**
-// @match        https://algeria.blsspainglobal.com/**
-// @match        https://algeria.blsspainglobal.com/DZA/NewCaptcha/GenerateCaptcha
-// @match        https://algeria.blsspainglobal.com/DZA/Bls/vtv**
+// @name         BLS CAPTCHA solver nnnnnnnnnnnn
+// @namespace    https://gakeys.eu.org/
+// @version      2024-06-11
+// @description  Free BLS CAPTCHA UNLIMITED By GAKEYS
+// @author       GAKEYS
+// @match        https://www.blsspainmorocco.net/*
+// @match        https://algeria.blsspainglobal.com/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=blsspainglobal.com
 // @grant        none
 // ==/UserScript==
 
+//https://algeria.blsspainglobal.com/DZA/Captcha/SubmitCaptcha
+
 (function() {
-    var append_container = document.querySelector("#navbarCollapse2");
+    'use strict';
 
-    // Create three buttons
-    var button1 = document.createElement("button");
-    button1.textContent = "Normal";
-    button1.style.borderRadius = "80px";
-    button1.style.marginRight = "5px"; // تغيير المسافة بين الأزرار
-    button1.style.color = "#ca9330";
-    button1.style.fontWeight = "bold";
+    var trueCaptcha = {
+        key:  "Ya8ItgnXH2m0sEuU3pNS",
 
-    var button2 = document.createElement("button");
-    button2.textContent = "Premium";
-    button2.style.borderRadius = "80px";
-    button2.style.marginRight = "5px"; // تغيير المسافة بين الأزرار
-    button2.style.color = "#ca9330";
-    button2.style.fontWeight = "bold";
 
-    var button3 = document.createElement("button");
-    button3.textContent = "Prime Time";
-    button3.style.borderRadius = "80px";
-    button3.style.marginRight = "5px"; // تغيير المسافة بين الأزرار
-    button3.style.color = "#ca9330";
-    button3.style.fontWeight = "bold";
+        userId:  "benahrref.oussama@gmail.com"
+    };
 
-    // Function to reset button colors
-    function resetButtonColors() {
-        button1.style.backgroundColor = "";
-        button2.style.backgroundColor = "";
-        button3.style.backgroundColor = "";
+    function dcodeImg(image_data, code, max) {
+        var params = {
+            'userid': trueCaptcha.userId,
+            'apikey': trueCaptcha.key,
+            'data': image_data.attr("src")
+        };
+        var opts = {
+            method: 'POST',
+            body: JSON.stringify(params),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        fetch("https://api.apitruecaptcha.org/one/gettext", opts)
+            .then((response) => response.json())
+            .then((data) => {
+                if (Number(data.result) == Number(code)) {
+                    console.log(data.result + "===>" + code);
+                    image_data.click();
+                }
+                if (max == 9) {
+                    if (code.length > 0) {
+                        setTimeout(function() {
+                           // document.querySelector("#btnVerify").click();
+                            document.querySelector("#submit").click();
+
+                        }, 1000);
+                    }
+                }
+            });
     }
 
-    // Add event listeners
-    button1.addEventListener("click", function() {
-        resetButtonColors();
-        button1.style.backgroundColor = "red";
-        localStorage.setItem('category', 'Normal');
-        var Client = {
-            category: 'Normal',
-        };
-        var mCaty;
-        var vsN = 0;
-        var vsNl = 0;
-        for (var i = 1; i <= 5; i++) {
-            const caty = $('#AppointmentCategoryId' + i + '_label');
-            if (caty.is(':visible')) {
-                $("#AppointmentCategoryId" + i + "_listbox > .k-item:contains('" + Client.category + "')").click();
-                mCaty = document.querySelector("#AppointmentCategoryId" + i).value;
+    function boxNumberShow() {
+        let index = 0;
+        let boxShow = 0;
+        document.querySelectorAll(".box-label").forEach(function(box) {
+            if ($(box).css("display") === "block") {
+                if ($(box).css("zIndex") > index) {
+                    index = $(box).css("zIndex");
+                }
             }
-        }
+        });
+        document.querySelectorAll(".box-label").forEach(function(box) {
+            if ($(box).css("display") === "block") {
+                if ($(box).css("zIndex") == index) {
+                    boxShow = $(box).html().split("Please select all boxes with number ")[1];
+                }
+            }
+        });
+        return boxShow;
+    }
+
+    function imgShow() {
+        let zIndex1 = 0, zIndex2 = 0, zIndex3 = 0, zIndex4 = 0, zIndex5 = 0, zIndex6 = 0, zIndex7 = 0, zIndex8 = 0, zIndex9 = 0;
+        let cas1 = null, cas2 = null, cas3 = null, cas4 = null, cas5 = null, cas6 = null, cas7 = null, cas8 = null, cas9 = null;
+
+        document.querySelectorAll(".captcha-img").forEach(function(dev) {
+            if ($(dev.parentElement).css("display") === "block") {
+                if ($(dev.parentElement).css("left") === "0px" && $(dev.parentElement).css("top") === "0px" && $(dev.parentElement).css("zIndex") > zIndex1) {
+                    zIndex1 = $(dev.parentElement).css("zIndex");
+                    cas1 = $(dev);
+                } else if ($(dev.parentElement).css("left") === "0px" && $(dev.parentElement).css("top") === "110px" && $(dev.parentElement).css("zIndex") > zIndex2) {
+                    zIndex2 = $(dev.parentElement).css("zIndex");
+                    cas2 = $(dev);
+                } else if ($(dev.parentElement).css("left") === "0px" && $(dev.parentElement).css("top") === "220px" && $(dev.parentElement).css("zIndex") > zIndex3) {
+                    zIndex3 = $(dev.parentElement).css("zIndex");
+                    cas3 = $(dev);
+                } else if ($(dev.parentElement).css("left") === "110px" && $(dev.parentElement).css("top") === "0px" && $(dev.parentElement).css("zIndex") > zIndex4) {
+                    zIndex4 = $(dev.parentElement).css("zIndex");
+                    cas4 = $(dev);
+                } else if ($(dev.parentElement).css("left") === "110px" && $(dev.parentElement).css("top") === "110px" && $(dev.parentElement).css("zIndex") > zIndex5) {
+                    zIndex5 = $(dev.parentElement).css("zIndex");
+                    cas5 = $(dev);
+                } else if ($(dev.parentElement).css("left") === "110px" && $(dev.parentElement).css("top") === "220px" && $(dev.parentElement).css("zIndex") > zIndex6) {
+                    zIndex6 = $(dev.parentElement).css("zIndex");
+                    cas6 = $(dev);
+                } else if ($(dev.parentElement).css("left") === "220px" && $(dev.parentElement).css("top") === "0px" && $(dev.parentElement).css("zIndex") > zIndex7) {
+                    zIndex7 = $(dev.parentElement).css("zIndex");
+                    cas7 = $(dev);
+                } else if ($(dev.parentElement).css("left") === "220px" && $(dev.parentElement).css("top") === "110px" && $(dev.parentElement).css("zIndex") > zIndex8) {
+                    zIndex8 = $(dev.parentElement).css("zIndex");
+                    cas8 = $(dev);
+                } else if ($(dev.parentElement).css("left") === "220px" && $(dev.parentElement).css("top") === "220px" && $(dev.parentElement).css("zIndex") > zIndex9) {
+                    zIndex9 = $(dev.parentElement).css("zIndex");
+                    cas9 = $(dev);
+                }
+            }
+        });
+
+        return [cas1, cas2, cas3, cas4, cas5, cas6, cas7, cas8, cas9];
+    }
+
+    $(document).ready(function() {
+        var indexCap = 0;
+        var codeCaptcha = boxNumberShow();
+        imgShow().forEach(function(dev) {
+            indexCap = indexCap + 1;
+            dcodeImg($(dev), codeCaptcha, indexCap);
+        });
+
+          setTimeout(() => {
+ //   doment.querySelector("#submit").click();
+
+ }, 1100);
     });
 
-    button2.addEventListener("click", function() {
-        resetButtonColors();
-        button2.style.backgroundColor = "red";
-        localStorage.setItem('category', 'Premium');
-        var Client = {
-            category: 'Premium',
-        };
-        var mCaty;
-        var vsN = 0;
-        var vsNl = 0;
-        for (var i = 1; i <= 5; i++) {
-            const caty = $('#AppointmentCategoryId' + i + '_label');
-            if (caty.is(':visible')) {
-                $("#AppointmentCategoryId" + i + "_listbox > .k-item:contains('" + Client.category + "')").click();
-                mCaty = document.querySelector("#AppointmentCategoryId" + i).value;
-            }
-        }
-    });
-
-    button3.addEventListener("click", function() {
-        resetButtonColors();
-        button3.style.backgroundColor = "red";
-        localStorage.setItem('category', 'Prime Time');
-        var Client = {
-            category: 'Prime Timee',
-        };
-        var mCaty;
-        var vsN = 0;
-        var vsNl = 0;
-        for (var i = 1; i <= 5; i++) {
-            const caty = $('#AppointmentCategoryId' + i + '_label');
-            if (caty.is(':visible')) {
-                $("#AppointmentCategoryId" + i + "_listbox > .k-item:contains('" + Client.category + "')").click();
-                mCaty = document.querySelector("#AppointmentCategoryId" + i).value;
-            }
-        }
-    });
-
-    // Append buttons to the container
-    append_container.prepend(button1);
-    append_container.prepend(button2);
-    append_container.prepend(button3);
 })();
