@@ -126,6 +126,7 @@
         <label>اللقب: <input type="text" id="lastName" /></label>
         <label>الايميل: <input type="email" id="email" /></label>
         <label>رقم الهاتف: <input type="tel" id="phone" /></label>
+        <label>عنوان: <input type="tel" id="adress" /></label>
         <button id="saveClient" class="custom-button">حفظ</button>
     `;
     document.body.appendChild(clientForm);
@@ -139,6 +140,7 @@
         let lastName = document.getElementById('lastName').value;
         let email = document.getElementById('email').value;
         let phone = document.getElementById('phone').value;
+        let adress = document.getElementById('adress').value;
 
         if (!firstName || !lastName || !email || !phone) {
             alert('يرجى تعبئة جميع الحقول');
@@ -158,7 +160,8 @@
             firstName: firstName,
             lastName: lastName,
             email: email,
-            phone: phone
+            phone: phone,
+            adress: adress
         };
 
         clients.push(client);
@@ -169,6 +172,7 @@
         document.getElementById('lastName').value = '';
         document.getElementById('email').value = '';
         document.getElementById('phone').value = '';
+        document.getElementById('adress').value = '';
     });
 
     function validateEmail(email) {
@@ -198,6 +202,7 @@
                 localStorage.setItem('selectedClientLastName', client.lastName);
                 localStorage.setItem('selectedClientEmail', client.email);
                 localStorage.setItem('selectedClientPhone', client.phone);
+                localStorage.setItem('selectedClientAdress', client.adress);
                 alert('تم حفظ معلومات العميل في Local Storage');
             });
 
@@ -221,6 +226,7 @@
                 document.getElementById('lastName').value = client.lastName;
                 document.getElementById('email').value = client.email;
                 document.getElementById('phone').value = client.phone;
+                document.getElementById('adress').value = client.adress;
                 clientForm.style.display = 'block';
                 clients = clients.filter(c => c.id !== client.id);
                 localStorage.setItem('clients', JSON.stringify(clients));
