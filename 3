@@ -16,8 +16,8 @@
     'use strict';
  window.alert = function() {};
     var trueCaptcha = {
-        key: localStorage.getItem('CaptchMail');
-        userId:  localStorage.getItem('CaptchaToken');
+           key:  localStorage.CaptchaToken ,
+        userId:  localStorage.CaptchMail 
     };
 
     function dcodeImg(image_data, code, max) {
