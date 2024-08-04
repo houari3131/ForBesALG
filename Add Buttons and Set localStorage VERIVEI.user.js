@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         BLS CAPTCHA solver nnnnnnnnnnnn
+// @name         BLS CAPTCHA solver nnnnnnnnn
 // @namespace    https://gakeys.eu.org/
 // @version      2024-06-11
 // @description  Free BLS CAPTCHA UNLIMITED By GAKEYS
