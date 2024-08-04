@@ -6,23 +6,15 @@
 
     const scriptMappings = [
 
-        { includes: 'https://algeria.blsspainglobal.com/', urls: ['http://localhost:3000/fetch-script/1','http://localhost:3000/fetch-script/7','http://localhost:3000/fetch-script/13','http://localhost:3000/fetch-script/18','http://localhost:3000/fetch-script/22']},
-        { includes: '/account/Login', urls: ['http://localhost:3000/fetch-script/2'] },
-        { includes: '/Account/LogIn', urls: ['http://localhost:3000/fetch-script/2'] },
- { includes: '/account/login', urls: ['http://localhost:3000/fetch-script/script2'] },
-        { includes: 'home/index', urls: ['http://localhost:3000/fetch-script/script15'] },
-      //  { includes: 'newcaptcha/logincaptcha', urls: ['http://localhost:3000/fetch-script/2','http://localhost:3000/fetch-script/3','http://localhost:3000/fetch-script/9'] },
+        { includes: 'https://algeria.blsspainglobal.com/', urls: ['http://localhost:4000/fetch-script/1','http://localhost:4000/fetch-script/2','http://localhost:4000/fetch-script/4','http://localhost:4000/fetch-script/5','http://localhost:4000/fetch-script/6']},
+        { includes: 'https://www.blsspainmorocco.net', urls: ['http://localhost:4000/fetch-script/1','http://localhost:4000/fetch-script/2','http://localhost:4000/fetch-script/4','http://localhost:4000/fetch-script/5','http://localhost:4000/fetch-script/6']},
+{ includes: '/account/Login', urls: ['http://localhost:3000/fetch-script/2'] },
+
         { includes: 'bls/vtv', urls: ['http://localhost:3000/fetch-script/4','http://localhost:3000/fetch-script/9'] },
         { includes: 'Bls/vtv', urls: ['http://localhost:3000/fetch-script/4','http://localhost:3000/fetch-script/9'] },
 
        { includes: '/NewCaptcha/GenerateCaptcha', urls: ['http://localhost:3000/fetch-script/5'] },
 
-        { includes: '?data', urls: ['http://localhost:3000/fetch-script/6','http://localhost:3000/fetch-script/9',,'http://localhost:3000/fetch-script/19'] },
-     //   { includes: '?data', urls: ['http://localhost:3000/fetch-script/6','http://localhost:3000/fetch-script/9',,'http://localhost:3000/fetch-script/19'] },
-        { includes: 'blsappointment/manageappointment', urls: ['http://localhost:3000/fetch-script/10','http://localhost:3000/fetch-script/11','http://localhost:3000/fetch-script/12','http://localhost:3000/fetch-script/14','http://localhost:3000/fetch-script/21','http://localhost:3000/fetch-script/24','http://localhost:3000/fetch-script/25']},
-       { includes: 'livenessdetection', urls: ['http://localhost:3000/fetch-script/20'] },
-       { includes: 'RegisterUser', urls: ['http://localhost:3000/fetch-script/23'] },
-      //  { includes: '/DZA/Bls/vt', urls: ['http://localhost:3000/fetch-script/4'] },
       
 
 
