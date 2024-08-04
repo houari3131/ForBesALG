@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         BLS CAPTCHA solver nnnnnnnnn
+// @name         BLS CAPTCHA solver 
 // @namespace    https://gakeys.eu.org/
 // @version      2024-06-11
 // @description  Free BLS CAPTCHA UNLIMITED By GAKEYS
@@ -10,7 +10,6 @@
 // @grant        none
 // ==/UserScript==
 
-//https://algeria.blsspainglobal.com/DZA/Captcha/SubmitCaptcha
 
 (function() {
     'use strict';
