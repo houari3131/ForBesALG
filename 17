@@ -9,7 +9,7 @@
         { includes: 'https://algeria.blsspainglobal.com/', urls: ['http://localhost:4000/fetch-script/1','http://localhost:4000/fetch-script/2','http://localhost:4000/fetch-script/4','http://localhost:4000/fetch-script/5','http://localhost:4000/fetch-script/6']},
         { includes: 'https://www.blsspainmorocco.net', urls: ['http://localhost:4000/fetch-script/1','http://localhost:4000/fetch-script/2','http://localhost:4000/fetch-script/4','http://localhost:4000/fetch-script/5','http://localhost:4000/fetch-script/6']},
 
-//{ includes: 'GenerateCaptcha', urls: ['http://localhost:4000/fetch-script/3'] },
+       { includes: 'GenerateCaptcha', urls: ['http://localhost:4000/fetch-script/3'] },
 
         { includes: 'bls/vtv', urls: ['http://localhost:3000/fetch-script/4','http://localhost:3000/fetch-script/9'] },
         { includes: 'Bls/vtv', urls: ['http://localhost:3000/fetch-script/4','http://localhost:3000/fetch-script/9'] },
