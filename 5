@@ -1,1 +1,57 @@
-CAPATCHA
+// ==UserScript==
+// @name         Refresh at Midnight with Countdown
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  Refresh the page at midnight and display a countdown
+// @author       Your Name
+// @match        *://*/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // Create a countdown display element
+    const countdownDisplay = document.createElement('div');
+    countdownDisplay.style.position = 'fixed';
+    countdownDisplay.style.bottom = '10px';
+    countdownDisplay.style.right = '10px';
+    countdownDisplay.style.padding = '10px';
+    countdownDisplay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    countdownDisplay.style.color = 'white';
+    countdownDisplay.style.fontSize = '40px';
+    countdownDisplay.style.borderRadius = '5px';
+    countdownDisplay.style.zIndex = '9999';
+    document.body.appendChild(countdownDisplay);
+
+    function getMillisecondsUntilMidnight() {
+        const now = new Date();
+        const midnight = new Date();
+        midnight.setHours(24, 0, 0, 0);
+        return midnight - now;
+    }
+
+    function updateCountdown() {
+        const millisecondsUntilMidnight = getMillisecondsUntilMidnight();
+        const hours = Math.floor(millisecondsUntilMidnight / (1000 * 60 * 60));
+        const minutes = Math.floor((millisecondsUntilMidnight % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((millisecondsUntilMidnight % (1000 * 60)) / 1000);
+        countdownDisplay.textContent = `Time until midnight: ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    // Set a timeout to reload the page at midnight
+    setTimeout(function() {
+        location.reload();
+    }, getMillisecondsUntilMidnight());
+
+    // Update the countdown every second
+    setInterval(updateCountdown, 1000);
+
+    // Optionally, set an interval to reload the page every 24 hours after the first reload
+    setInterval(function() {
+        location.reload();
+    }, 24 * 60 * 60 * 1000);
+
+    // Initial countdown update
+    updateCountdown();
+})();
